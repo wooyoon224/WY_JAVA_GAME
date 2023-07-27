@@ -1,10 +1,10 @@
 package Stage;
 
-import java.util.Random;
+import Character.*;
 import java.util.Scanner;
 
 public class Stage {
-    public void ChoicePr(){
+    public void ChoicePr(MyCharacter character){
         System.out.println("===============");
         System.out.println("1. 왼쪽");
         System.out.println("2. 중간");
@@ -17,23 +17,26 @@ public class Stage {
         switch (choice) {
             case 1:
                 System.out.println("1. 왼쪽 선택");
+                character.stage++;
                 events = Randomevent();
                 System.out.println("이벤트 : " + events);
                 EventFilter(events);
                 break;
             case 2:
                 System.out.println("2. 중간 선택");
+                character.stage++;
                 events = Randomevent();
                 System.out.println("이벤트 : " + events);
                 break;
             case 3:
                 System.out.println("3. 오른쪽 선택");
+                character.stage++;
                 events = Randomevent();
                 System.out.println("이벤트 : " + events);
                 break;
             default:
                 System.out.println("선택지에 없습니다. 다시 선택하세요.");
-                ChoicePr();
+                ChoicePr(character);
         }
     }
 
@@ -43,11 +46,6 @@ public class Stage {
         int choice = sc.nextInt();
 
         return choice;
-    }
-
-    public int RandomMap(int min, int max) {
-        Random random = new Random();
-        return random.nextInt(max - min + 1) + min;
     }
 
     public String Randomevent(){
@@ -66,18 +64,23 @@ public class Stage {
     }
 
     public void EventFilter(String event){
-        switch (event) {
-            case "공터":
-                System.out.println("아무일도 일어나지 않았다.");
-                break;
-            case "쉼터" :
+        event = event.trim(); // 공백 제거
 
-            case "함정!" :
-
-            case "몬스터 습격!!!" :
-
-            default:
-                System.out.println("Error!");
+        if (event.equals("공터")) {
+            System.out.println("아무일도 일어나지 않았다.");
+        }
+        else if (event.equals("쉼터")) {
+            System.out.println("쉼터 이벤트 발생.");
+        }
+        else if (event.equals("함정!")) {
+            System.out.println("함정 이벤트 발생.");
+        }
+        else if (event.equals("몬스터 습격!!!")) {
+            System.out.println("몬스터 습격 이벤트 발생.");
+        }
+        else {
+            System.out.println("Error!");
+            EventFilter(event);
         }
     }
 
