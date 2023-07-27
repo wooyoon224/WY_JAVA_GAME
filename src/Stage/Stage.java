@@ -1,5 +1,6 @@
 package Stage;
 
+import Stage.*;
 import Character.*;
 import java.util.Scanner;
 
@@ -20,21 +21,21 @@ public class Stage {
                 character.stage++;
                 events = Randomevent();
                 System.out.println("이벤트 : " + events);
-                EventFilter(events);
+                EventFilter(events, character);
                 break;
             case 2:
                 System.out.println("2. 중간 선택");
                 character.stage++;
                 events = Randomevent();
                 System.out.println("이벤트 : " + events);
-                EventFilter(events);
+                EventFilter(events, character);
                 break;
             case 3:
                 System.out.println("3. 오른쪽 선택");
                 character.stage++;
                 events = Randomevent();
                 System.out.println("이벤트 : " + events);
-                EventFilter(events);
+                EventFilter(events, character);
                 break;
             default:
                 System.out.println("선택지에 없습니다. 다시 선택하세요.");
@@ -65,8 +66,9 @@ public class Stage {
 
     }
 
-    public void EventFilter(String event){
+    public void EventFilter(String event, MyCharacter character){
         event = event.trim(); // 공백 제거
+        EventRun eventRun = new EventRun();
 
         switch (event) {
             case "공터":
@@ -74,16 +76,18 @@ public class Stage {
                 break;
             case "쉼터" :
                 System.out.println("쉼터 이벤트 발생.");
+                eventRun.RestTime(character); // 휴식 이벤트 실행
                 break;
             case "함정!" :
                 System.out.println("함정 이벤트 발생.");
+                eventRun.Trap(character);   // 함정 이벤트 실행
                 break;
             case "몬스터 습격!!!" :
                 System.out.println("몬스터 습격 이벤트 발생.");
                 break;
             default:
                 System.out.println("Error!");
-                EventFilter(event);
+                break;
         }
     }
 

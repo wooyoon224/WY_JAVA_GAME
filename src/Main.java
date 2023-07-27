@@ -15,13 +15,14 @@ public class Main {
         String name = sc.nextLine();
 
         // 캐릭터 객체 생성
-        MyCharacter character = new MyCharacter(name, 100, 0);
+        MyCharacter character = new MyCharacter(name, 100, 0, 15);
 
 
         // 정보 출력
         character.Print_CH();
         // 갈림길 고르기
         stage.ChoicePr(character);
+        character.Print_CH();
 
     }
 }
