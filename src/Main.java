@@ -15,7 +15,7 @@ public class Main {
         String name = sc.nextLine();
 
         // 캐릭터 객체 생성
-        MyCharacter character = new MyCharacter(name, 100, 0, 25);
+        MyCharacter character = new MyCharacter(name, 100, 0, 20);
 
         // 정보 출력
         character.Print_CH();

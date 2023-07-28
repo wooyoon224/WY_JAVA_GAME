@@ -20,21 +20,21 @@ public class Stage {
                 System.out.println("1. 왼쪽 선택");
                 character.stage++;
                 events = Randomevent();
-                System.out.println("이벤트 : " + events);
+                System.out.println(events + "\n");
                 EventFilter(events, character);
                 break;
             case 2:
                 System.out.println("2. 중간 선택");
                 character.stage++;
                 events = Randomevent();
-                System.out.println("이벤트 : " + events);
+                System.out.println(events + "\n");
                 EventFilter(events, character);
                 break;
             case 3:
                 System.out.println("3. 오른쪽 선택");
                 character.stage++;
                 events = Randomevent();
-                System.out.println("이벤트 : " + events);
+                System.out.println(events + "\n");
                 EventFilter(events, character);
                 break;
             default:
@@ -75,15 +75,15 @@ public class Stage {
                 System.out.println("아무일도 일어나지 않았다.");
                 break;
             case "쉼터" :
-                System.out.println("쉼터 이벤트 발생.");
+                // System.out.println("쉼터 이벤트 발생.");
                 eventRun.RestTime(character); // 휴식 이벤트 실행
                 break;
             case "함정!" :
-                System.out.println("함정 이벤트 발생.");
+                // System.out.println("함정 이벤트 발생.");
                 eventRun.Trap(character);   // 함정 이벤트 실행
                 break;
             case "몬스터 습격!!!" :
-                System.out.println("몬스터 습격 이벤트 발생.");
+                // System.out.println("몬스터 습격 이벤트 발생.");
                 eventRun.Monster(character);
                 break;
             default:

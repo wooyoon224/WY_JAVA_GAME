@@ -22,7 +22,7 @@ public class MyCharacter {
         System.out.println("진행한 스테이지 수: " + stage + " / " + numberOfMaps);
         System.out.println("이름: " + name);
         System.out.println("HP : " + hp);
-        System.out.println("공격력 : " + attack);
+        System.out.println("공격력(최소값) : " + attack);
         System.out.println("======================");
     }
 

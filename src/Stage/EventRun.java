@@ -52,7 +52,7 @@ public class EventRun {
 
                 if (random.nextDouble() < 0.15) {
                     // 몬스터 A가 회피
-                    System.out.println("몬스터 A가 회피합니다. 아무 피해도 입지 않았습니다.");
+                    System.out.println("몬스터 A가 회피합니다. 아무 피해도 입지 않았습니다.\n");
                     isAttack = false;
                 }
 
@@ -80,23 +80,23 @@ public class EventRun {
         }
 
         if (character.hp <= 0) {
-            System.out.println("게임 오버! 체력이 0 이하입니다.");
+            System.out.println("게임 오버! 체력이 0 이하입니다.\n");
             System.exit(0); // 프로그램 종료
         }
 
         if (monsterHP <= 0) {
-            System.out.println("몬스터를 성공적으로 처치했습니다.");
+            System.out.println("몬스터를 성공적으로 처치했습니다.\n");
         }
     }
 
     public int PlayerAttack(MyCharacter character, int monsterHP, int MaxHP) {
         // 플레이어가 몬스터를 공격
         int playerAttackDamage = character.attackMonster();
-        System.out.println("주인공의 공격! 몬스터에게 " + playerAttackDamage + "의 데미지를 주었습니다.");
+        System.out.println(character.name + "의 공격! 몬스터에게 " + playerAttackDamage + "의 데미지를 주었습니다.");
 
         monsterHP -= playerAttackDamage;
 
-        System.out.println("몬스터 체력 : " + monsterHP + "/" + MaxHP);
+        System.out.println("*** 몬스터 체력 : " + monsterHP + "/" + MaxHP + " *** \n");
 
         return monsterHP;
     }
