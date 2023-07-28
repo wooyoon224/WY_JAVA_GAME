@@ -20,21 +20,21 @@ public class Stage {
                 System.out.println("1. 왼쪽 선택");
                 character.stage++;
                 events = Randomevent();
-                System.out.println(events + "\n");
+                System.out.println("[" + events + "]\n");
                 EventFilter(events, character);
                 break;
             case 2:
                 System.out.println("2. 중간 선택");
                 character.stage++;
                 events = Randomevent();
-                System.out.println(events + "\n");
+                System.out.println("[" + events + "]\n");
                 EventFilter(events, character);
                 break;
             case 3:
                 System.out.println("3. 오른쪽 선택");
                 character.stage++;
                 events = Randomevent();
-                System.out.println(events + "\n");
+                System.out.println("[" + events + "]\n");
                 EventFilter(events, character);
                 break;
             default:
@@ -72,7 +72,7 @@ public class Stage {
 
         switch (event) {
             case "공터":
-                System.out.println("아무일도 일어나지 않았다.");
+                System.out.println("아무일도 일어나지 않았다...");
                 break;
             case "쉼터" :
                 // System.out.println("쉼터 이벤트 발생.");

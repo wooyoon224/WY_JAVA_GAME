@@ -36,47 +36,39 @@ public class EventRun {
     public void Monster(MyCharacter character) {
         Random random = new Random();
 
-        // 몬스터의 체력을 랜덤하게 설정 (25 이상 50 이하)
-        int monsterHP = random.nextInt(26) + 25;
-        int monsterMaxHP = monsterHP;
-        double monsterType = random.nextDouble();
+        Monster monster;
+        if (random.nextDouble() < 0.25) {
+            // 몬스터 A 생성
+            monster = new MonsterA();
+        }
+        else {
+            // 몬스터 B 생성
+            monster = new MonsterB();
+        }
 
-        if (monsterType < 0.25) {
-            // 몬스터 A
-            System.out.println("몬스터 A와 전투 시작!");
-            int attackDamage = 0;
+        // 몬스터 정보 출력
+        monster.Print_Monster();
 
-            while (character.hp > 0 && monsterHP > 0) {
+        // 몬스터의 체력을 저장
+        int monsterHP = monster.hp;
 
-                boolean isAttack = true;
+        while (character.hp > 0 && monsterHP > 0) {
+            // 몬스터가 플레이어를 공격
+            int attackDamage = monster.attackPlayer();
+            System.out.println(monster.name + "(이)가 " + character.name + "을 공격합니다!");
+            character.hp -= attackDamage;
+            System.out.println(character.name + "의 체력이 " + attackDamage + "만큼 감소했습니다.");
 
-                if (random.nextDouble() < 0.15) {
-                    // 몬스터 A가 회피
-                    System.out.println("몬스터 A가 회피합니다. 아무 피해도 입지 않았습니다.\n");
-                    isAttack = false;
-                }
+            System.out.println("*** " + character.name + " 체력 : " + character.hp + "/ 100 ***\n");
 
-                if (isAttack) {
-                    // 공격력을 랜덤하게 설정 (10 이상 25 이하)
-                    attackDamage = random.nextInt(16) + 10;
-                    character.hp -= attackDamage;
+            // 플레이어가 몬스터를 공격
+            int playerAttackDamage = character.attackMonster();
+            System.out.println(character.name + "(이)가 " + monster.name + "을 공격합니다!");
+            monsterHP -= playerAttackDamage;
+            System.out.println("몬스터의 체력이 " + playerAttackDamage + "만큼 감소했습니다.");
 
-                    System.out.println("몬스터 A의 공격! 체력이 " + attackDamage + "만큼 감소했습니다.");
-                    monsterHP = PlayerAttack(character, monsterHP, monsterMaxHP);
-                }
-            }
-        } else {
-            // 몬스터 B
-            System.out.println("몬스터 B와 전투 시작!");
-
-            while (character.hp > 0 && monsterHP > 0) {
-                // 몬스터 B 공격
-                int attackDamage = random.nextInt(16) + 15;
-                character.hp -= attackDamage;
-
-                System.out.println("몬스터 B의 공격! 체력이 " + attackDamage + "만큼 감소했습니다.");
-                monsterHP = PlayerAttack(character, monsterHP, monsterMaxHP);
-            }
+            // 몬스터의 체력 출력
+            System.out.println("*** 몬스터 체력 : " + monsterHP + "/" + monster.hp + " ***\n");
         }
 
         if (character.hp <= 0) {
@@ -88,17 +80,4 @@ public class EventRun {
             System.out.println("몬스터를 성공적으로 처치했습니다.\n");
         }
     }
-
-    public int PlayerAttack(MyCharacter character, int monsterHP, int MaxHP) {
-        // 플레이어가 몬스터를 공격
-        int playerAttackDamage = character.attackMonster();
-        System.out.println(character.name + "의 공격! 몬스터에게 " + playerAttackDamage + "의 데미지를 주었습니다.");
-
-        monsterHP -= playerAttackDamage;
-
-        System.out.println("*** 몬스터 체력 : " + monsterHP + "/" + MaxHP + " *** \n");
-
-        return monsterHP;
-    }
-
 }
