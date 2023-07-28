@@ -16,14 +16,6 @@ public class MyCharacter {
         this.attack=attack;
     }
 
-    public void Print_Monster(String name, int hp, int attack) {
-        System.out.println("======================");
-        System.out.println("몬스터 이름: " + name);
-        System.out.println("몬스터 HP : " + hp);
-        System.out.println("몬스터 공격력 : " + attack);
-        System.out.println("======================");
-    }
-
     // 이름 출력 메서드
     public void Print_CH() {
         System.out.println("======================");
@@ -34,6 +26,19 @@ public class MyCharacter {
         System.out.println("======================");
     }
 
+    // 크리티컬 기능 추가
+    public int attackMonster() {
+        Random random = new Random();
+        double criticalChance = random.nextDouble();
+
+        if (criticalChance < 0.1) {
+            // 크리티컬 발동
+            System.out.println("크리티컬 공격!");
+            return (attack + random.nextInt(16)) * 2;
+        } else {
+            return attack + random.nextInt(16);
+        }
+    }
 
     public int RandomMap(int min, int max) {
         Random random = new Random();

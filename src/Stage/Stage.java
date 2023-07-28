@@ -84,6 +84,7 @@ public class Stage {
                 break;
             case "몬스터 습격!!!" :
                 System.out.println("몬스터 습격 이벤트 발생.");
+                eventRun.Monster(character);
                 break;
             default:
                 System.out.println("Error!");
