@@ -16,7 +16,7 @@ public class Monster {
         System.out.println("몬스터 이름: " + name);
         System.out.println("몬스터 HP : " + hp);
         System.out.println("몬스터 공격력 : " + attack);
-        System.out.println("======================\n");
+        System.out.println("======================");
     }
 
     public int attackPlayer() {

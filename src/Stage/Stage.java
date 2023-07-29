@@ -1,6 +1,5 @@
 package Stage;
 
-import Stage.*;
 import Character.*;
 import java.util.Scanner;
 

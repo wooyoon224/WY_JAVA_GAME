@@ -1,6 +1,8 @@
 package Stage;
 import Character.*;
+
 import java.util.Random;
+import java.util.Scanner;
 
 public class EventRun {
     public void RestTime(MyCharacter character) {
@@ -35,6 +37,7 @@ public class EventRun {
 
     public void Monster(MyCharacter character) {
         Random random = new Random();
+        Stage stage = new Stage();
 
         Monster monster;
         if (random.nextDouble() < 0.25) {
@@ -51,24 +54,38 @@ public class EventRun {
 
         // 몬스터의 체력을 저장
         int monsterHP = monster.hp;
+        Scanner sc = new Scanner(System.in);
 
         while (character.hp > 0 && monsterHP > 0) {
-            // 몬스터가 플레이어를 공격
-            int attackDamage = monster.attackPlayer();
-            System.out.println(monster.name + "(이)가 " + character.name + "을 공격합니다!");
-            character.hp -= attackDamage;
-            System.out.println(character.name + "의 체력이 " + attackDamage + "만큼 감소했습니다.");
+            System.out.println("======================");
+            System.out.println("1. 싸운다");
+            System.out.println("2. 도망친다");
+            System.out.println("======================");
+            System.out.print("선택지 : ");
+            int sc_Attack= sc.nextInt();
 
-            System.out.println("*** " + character.name + " 체력 : " + character.hp + "/ 100 ***\n");
+            if(sc_Attack==1) {
+                System.out.println("[싸운다 선택]");
+                // 플레이어와 몬스터의 공격 턴
+                monsterHP = battleTurn(character, monster, monsterHP);
+            }
+            else if (sc_Attack==2) {
+                System.out.println("[도망친다 선택]");
 
-            // 플레이어가 몬스터를 공격
-            int playerAttackDamage = character.attackMonster();
-            System.out.println(character.name + "(이)가 " + monster.name + "을 공격합니다!");
-            monsterHP -= playerAttackDamage;
-            System.out.println("몬스터의 체력이 " + playerAttackDamage + "만큼 감소했습니다.");
-
-            // 몬스터의 체력 출력
-            System.out.println("*** 몬스터 체력 : " + monsterHP + "/" + monster.hp + " ***\n");
+                // 10%의 확률로 도망침
+                if (random.nextDouble() < 0.1) {
+                    System.out.println("무사히 도망쳤습니다.\n");
+                    stage.ChoicePr(character);
+                    break;
+                }
+                else {
+                    System.out.println("도망치지 못했습니다.\n");
+                    // 플레이어와 몬스터의 공격 턴
+                    monsterHP = battleTurn(character, monster, monsterHP);
+                }
+            }
+            else
+                System.out.println("잘못 선택 했습니다. 다시 선택하세요.");
         }
 
         if (character.hp <= 0) {
@@ -79,5 +96,27 @@ public class EventRun {
         if (monsterHP <= 0) {
             System.out.println("몬스터를 성공적으로 처치했습니다.\n");
         }
+    }
+
+    public int battleTurn(MyCharacter character, Monster monster, int monsterHP) {
+        System.out.println("전투시작!!!");
+
+        // 몬스터가 플레이어를 공격
+        int monsterAttackDamage = monster.attackPlayer();
+        System.out.println(monster.name + "(이)가 " + character.name + "을 공격합니다!");
+        character.hp -= monsterAttackDamage;
+        System.out.println(character.name + "의 체력이 " + monsterAttackDamage + "만큼 감소했습니다.");
+
+        System.out.println("*** " + character.name + " 체력 : " + character.hp + "/ 100 ***\n");
+
+        // 플레이어가 몬스터를 공격
+        int playerAttackDamage = character.attackMonster();
+        System.out.println(character.name + "(이)가 " + monster.name + "을 공격합니다!");
+        monsterHP -= playerAttackDamage;
+        System.out.println("몬스터의 체력이 " + playerAttackDamage + "만큼 감소했습니다.");
+
+        // 몬스터의 체력 출력
+        System.out.println("*** 몬스터 체력 : " + monsterHP + "/" + monster.hp + " ***\n");
+        return monsterHP;
     }
 }
