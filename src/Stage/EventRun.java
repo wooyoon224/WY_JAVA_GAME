@@ -89,6 +89,7 @@ public class EventRun {
 
         if (character.hp <= 0) {
             System.out.println("게임 오버! 체력이 0 이하입니다.\n");
+            System.out.println("*** [" + character.stage + "/" + character.numberOfMaps + "] ***");
             System.exit(0); // 프로그램 종료
         }
 

@@ -66,6 +66,7 @@ public class Main {
         }
 
         System.out.println("*** 축하드립니다! 무사히 던전을 빠져나왔습니다!! ***");
+        System.out.println("*** [" + character.stage + "/" + character.numberOfMaps + "] ***");
 
     }
 }
