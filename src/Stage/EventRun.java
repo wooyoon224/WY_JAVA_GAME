@@ -103,17 +103,24 @@ public class EventRun {
 
         // 몬스터가 플레이어를 공격
         int monsterAttackDamage = monster.attackPlayer();
-        System.out.println(monster.name + "(이)가 " + character.name + "을 공격합니다!");
-        character.hp -= monsterAttackDamage;
-        System.out.println(character.name + "의 체력이 " + monsterAttackDamage + "만큼 감소했습니다.");
-
-        System.out.println("*** " + character.name + " 체력 : " + character.hp + "/ 100 ***\n");
+        if (monsterAttackDamage > 0) {
+            System.out.println(monster.name + "(이)가 " + character.name + "을 공격합니다!");
+            character.hp -= monsterAttackDamage;
+            System.out.println(character.name + "의 체력이 " + monsterAttackDamage + "만큼 감소했습니다.");
+            System.out.println("*** " + character.name + " 체력 : " + character.hp + "/ 100 ***\n");
+        }
+        else {
+            System.out.println(monster.name + "가 회피하여 아무 피해도 입지 않았습니다.");
+            System.out.println("*** " + character.name + " 체력 : " + character.hp + "/ 100 ***\n");
+        }
 
         // 플레이어가 몬스터를 공격
-        int playerAttackDamage = character.attackMonster();
-        System.out.println(character.name + "(이)가 " + monster.name + "을 공격합니다!");
-        monsterHP -= playerAttackDamage;
-        System.out.println("몬스터의 체력이 " + playerAttackDamage + "만큼 감소했습니다.");
+        if (monsterAttackDamage > 0) {
+            int playerAttackDamage = character.attackMonster();
+            System.out.println(character.name + "(이)가 " + monster.name + "을 공격합니다!");
+            monsterHP -= playerAttackDamage;
+            System.out.println("몬스터의 체력이 " + playerAttackDamage + "만큼 감소했습니다.");
+        }
 
         // 몬스터의 체력 출력
         System.out.println("*** 몬스터 체력 : " + monsterHP + "/" + monster.hp + " ***\n");
