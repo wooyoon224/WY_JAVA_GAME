@@ -4,7 +4,7 @@ import java.util.Random;
 
 public class MonsterA extends Monster {
     public MonsterA() {
-        super("몬스터 A", new Random().nextInt(26) + 25, 8);
+        super("몬스터 A", new Random().nextInt(26) + 15, 8);
     }
 
     public int attackPlayer() {

@@ -73,7 +73,7 @@ public class EventRun {
                 System.out.println("[도망친다 선택]");
 
                 // 10%의 확률로 도망침
-                if (random.nextDouble() < 0.5) {
+                if (random.nextDouble() < 0.1) {
                     System.out.println("무사히 도망쳤습니다.\n");
                     break;
                 }
