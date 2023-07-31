@@ -1,5 +1,6 @@
 package Character;
 import java.util.Random;
+
 public class Monster {
     public String name;
     public int hp;

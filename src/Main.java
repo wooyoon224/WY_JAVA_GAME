@@ -11,6 +11,7 @@ public class Main {
         Scanner sc = new Scanner(System.in);
 
         System.out.println("======================");
+        System.out.println("*** 던전 탈출 시뮬레이션! ***");
         System.out.println("{Start Menu}");
         System.out.println("시작 : q를 제외한 아무키");
         System.out.println("종료 : q");
@@ -32,9 +33,9 @@ public class Main {
         // 캐릭터 객체 생성
         MyCharacter character = new MyCharacter(name, 100, 0, 20);
 
-        while (character.stage <= character.numberOfMaps){
+        while (character.stage < character.numberOfMaps){
             System.out.println("======================");
-            System.out.println("{Main Menu}}");
+            System.out.println("{Main Menu}");
             System.out.println("1. 플레이어 정보");
             System.out.println("2. 게임 진행 [갈림길 선택]");
             System.out.println("3. 게임 설명");
@@ -55,6 +56,7 @@ public class Main {
                     break;
                 case 3:
                     // 설명
+                    character.Print_Explan();
                     break;
                 case 4:
                     System.out.println("[게임을 종료합니다.]");
@@ -62,6 +64,8 @@ public class Main {
             }
 
         }
+
+        System.out.println("*** 축하드립니다! 무사히 던전을 빠져나왔습니다!! ***");
 
     }
 }
