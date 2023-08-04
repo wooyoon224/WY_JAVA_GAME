@@ -59,6 +59,7 @@ public class Main {
                     character.Print_Explan();
                     break;
                 case 4:
+                    // 게임종료
                     System.out.println("[게임을 종료합니다.]");
                     System.exit(0);
             }

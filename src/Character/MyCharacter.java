@@ -71,7 +71,7 @@ public class MyCharacter {
 
             switch (Exp_choice) {
                 case 1:
-                    System.out.println("설정 : 어느날 눈을 떠보니" + name +"은 어두운 던전 안쪽이었다.\n" +
+                    System.out.println("설정 : 어느날 눈을 떠보니 " + name +"은 어두운 던전 안쪽이었다.\n" +
                             "이곳이 던전 입구의 근처인지 아닌지도 모르는 상황. 몬스터들이 알아차리기 전에 바깥으로 탈출하는게 우선이다.\n" +
                             "죽지 않고 던전 밖으로 탈출하자!");
                     break;
