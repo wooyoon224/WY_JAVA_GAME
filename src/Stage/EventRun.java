@@ -37,10 +37,10 @@ public class EventRun {
 
     public void Monster(MyCharacter character) {
         Random random = new Random();
-        Stage stage = new Stage();
 
         Monster monster;
-        if (random.nextDouble() < 0.25) {
+        // 25% 확률
+        if (random.nextDouble() < 0.7) {
             // 몬스터 A 생성
             monster = new MonsterA();
         }
@@ -103,16 +103,22 @@ public class EventRun {
 
         // 몬스터가 플레이어를 공격
         int monsterAttackDamage = monster.attackPlayer();
+        Random random = new Random();
         if (monsterAttackDamage > 0) {
             System.out.println(monster.name + "(이)가 " + character.name + "을 공격합니다!");
             character.hp -= monsterAttackDamage;
             System.out.println(character.name + "의 체력이 " + monsterAttackDamage + "만큼 감소했습니다.");
             System.out.println("*** " + character.name + " 체력 : " + character.hp + "/ 100 ***\n");
         }
-        else {
-            System.out.println(monster.name + "가 회피하여 아무 피해도 입지 않았습니다.");
+        else{
+            System.out.println(monster.name + "(이)가 " + character.name + "을 공격합니다!");
+            int monsterAttackDamageMiss=monster.attack + random.nextInt(11);
+            character.hp -= monsterAttackDamageMiss;
+            System.out.println(character.name + "의 체력이 " + monsterAttackDamageMiss + "만큼 감소했습니다.");
             System.out.println("*** " + character.name + " 체력 : " + character.hp + "/ 100 ***\n");
         }
+
+
 
         // 플레이어가 몬스터를 공격
         if (monsterAttackDamage > 0) {
@@ -120,6 +126,9 @@ public class EventRun {
             System.out.println(character.name + "(이)가 " + monster.name + "을 공격합니다!");
             monsterHP -= playerAttackDamage;
             System.out.println("몬스터의 체력이 " + playerAttackDamage + "만큼 감소했습니다.");
+        }
+        else {
+            System.out.println(monster.name + "가 회피하여 아무 피해도 입지 않았습니다.");
         }
 
         // 몬스터의 체력 출력

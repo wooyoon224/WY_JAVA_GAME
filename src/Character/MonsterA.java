@@ -8,8 +8,8 @@ public class MonsterA extends Monster {
     }
 
     public int attackPlayer() {
-        if (Math.random() < 0.3) {
-            System.out.println(name + "가 회피합니다. 아무 피해도 입지 않았습니다.");
+        if (Math.random() < 0.5) {
+
             return 0;
         } else {
             return super.attackPlayer(); // 부모 클래스의 attackPlayer 메서드 호출
