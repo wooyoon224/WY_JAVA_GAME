@@ -40,7 +40,7 @@ public class EventRun {
 
         Monster monster;
         // 25% 확률
-        if (random.nextDouble() < 0.7) {
+        if (random.nextDouble() < 0.25) {
             // 몬스터 A 생성
             monster = new MonsterA();
         }

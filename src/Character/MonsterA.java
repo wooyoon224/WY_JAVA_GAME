@@ -8,10 +8,10 @@ public class MonsterA extends Monster {
     }
 
     public int attackPlayer() {
-        if (Math.random() < 0.5) {
-
+        if (Math.random() < 0.3) {
             return 0;
-        } else {
+        }
+        else {
             return super.attackPlayer(); // 부모 클래스의 attackPlayer 메서드 호출
         }
     }
