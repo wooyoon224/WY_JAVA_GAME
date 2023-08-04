@@ -119,6 +119,11 @@ public class EventRun {
             System.out.println("*** " + character.name + " 체력 : " + character.hp + "/ 100 ***\n");
         }
 
+        if(character.hp<=0){
+            System.out.println("GAME OVER!\n");
+            System.out.println("체력이 0 이하입니다");
+            System.exit(0); // 프로그램 종료
+        }
 
 
         // 플레이어가 몬스터를 공격
