@@ -30,7 +30,8 @@ public class EventRun {
         System.out.println("함정으로 인해 HP " + hpTrap + "이 감소합니다.");
 
         if (character.hp <= 0) {
-            System.out.println("GAME OVER!");
+            System.out.println("GAME OVER!\n");
+            System.out.println("체력이 0 이하입니다.\n");
             System.exit(0); // 프로그램 종료
         }
     }
