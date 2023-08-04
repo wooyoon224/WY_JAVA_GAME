@@ -122,7 +122,7 @@ public class EventRun {
         if(character.hp<=0){
             System.out.println("GAME OVER!\n");
             System.out.println("체력이 0 이하입니다");
-            System.exit(0); // 프로그램 종료
+            return 0;
         }
 
 
